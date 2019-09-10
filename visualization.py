@@ -68,18 +68,15 @@ def vis(result_sha, data_root, result_root):
 
 if __name__ == "__main__":
 	if len(sys.argv)!=2:
-		print("Usage: python visualization.py result_sha(e.g., 3d_det_test)")
+		print("Usage: python visualization.py result_sha(e.g., car_3d_det_test)")
 		sys.exit(1)
 
 	result_root = './results'
 	result_sha = sys.argv[1]
-	if ('train' in result_sha) or ('val' in result_sha):
-		print("No image data is provided for %s, please download the KITTI dataset" % split)
-		sys.exit(1)
-	elif 'test' in result_sha:
-		data_root = './data/KITTI/test'
+	if 'val' in result_sha: data_root = './data/KITTI/resources/training'
+	elif 'test' in result_sha: data_root = './data/KITTI/resources/testing'
 	else:
-		print("No image data is provided for %s, please download the KITTI dataset" % split)
+		print("wrong split!")
 		sys.exit(1)
 
 	vis(result_sha, data_root, result_root)
