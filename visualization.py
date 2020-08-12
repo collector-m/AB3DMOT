@@ -1,7 +1,11 @@
+# Author: Xinshuo Weng
+# email: xinshuo.weng@gmail.com
+
 import os, numpy as np, sys, cv2
 from PIL import Image
-from utils import is_path_exists, mkdir_if_missing, load_list_from_folder, fileparts, random_colors
-from kitti_utils import read_label, compute_box_3d, draw_projected_box3d, Calibration
+from xinshuo_io import is_path_exists, mkdir_if_missing, load_list_from_folder, fileparts
+from xinshuo_visualization import random_colors
+from AB3DMOT_libs.kitti_utils import read_label, compute_box_3d, draw_projected_box3d, Calibration
 
 max_color = 30
 colors = random_colors(max_color)       # Generate random colors
@@ -67,8 +71,8 @@ def vis(result_sha, data_root, result_root):
 			count += 1
 
 if __name__ == "__main__":
-	if len(sys.argv)!=2:
-		print("Usage: python visualization.py result_sha(e.g., car_3d_det_test)")
+	if len(sys.argv) != 2:
+		print('Usage: python visualization.py result_sha(e.g., pointrcnn_Car_test_thres)')
 		sys.exit(1)
 
 	result_root = './results'
